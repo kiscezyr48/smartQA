@@ -1,0 +1,1 @@
+# app/components 초기화
