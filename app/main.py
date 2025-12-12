@@ -7,6 +7,11 @@ from utils.state_manager import init_session_state, reset_session_state
 
 API_BASE_URL = "http://localhost:8000/api/v1"
 
+# 페이지 설정
+st.set_page_config(page_title   = "SmartQA Assistant"
+                 , page_icon    = "📝"
+                 , layout       = "wide"
+                 )
 
 class AgentType:
     SQAA = "SQAA_AGENT" # SamrtQA Assistant
@@ -165,8 +170,6 @@ def display_evaluate_results():
 
 
 def render_ui():
-    # 페이지 설정
-    st.set_page_config(page_title="SmartQA Assistant", page_icon="📝", layout="wide")
 
     # 제목 및 소개
     st.title("📝 SmartQA Assistant")

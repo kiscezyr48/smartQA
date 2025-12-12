@@ -8,7 +8,7 @@ API_BASE_URL = "http://localhost:8000/api/v1"
 
 
 # API로 SmartQA Assistant 이력 조회
-def fetch_evaluation_history():
+def fetch_evaluate_history():
     """API를 통해 재평가 이력 가져오기"""
     try:
         response = requests.get(f"{API_BASE_URL}/evaluation/")
