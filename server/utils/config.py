@@ -9,47 +9,47 @@ load_dotenv()
 
 class Settings(BaseSettings):
     # Azure OpenAI 설정
-    AOAI_API_KEY: str
-    AOAI_ENDPOINT: str
-    AOAI_DEPLOY_GPT4O: str
-    AOAI_EMBEDDING_DEPLOYMENT: str
-    AOAI_API_VERSION: str
+    AOAI_API_KEY                : str
+    AOAI_ENDPOINT               : str
+    AOAI_DEPLOY_GPT4O           : str
+    AOAI_EMBEDDING_DEPLOYMENT   : str
+    AOAI_API_VERSION            : str
 
     # Langfuse 설정
-    LANGFUSE_PUBLIC_KEY: str
-    LANGFUSE_SECRET_KEY: str
-    LANGFUSE_HOST: str
+    LANGFUSE_PUBLIC_KEY : str
+    LANGFUSE_SECRET_KEY : str
+    LANGFUSE_HOST       : str
 
-    API_V1_STR: str = "/api/v1"
+    API_V1_STR  : str = "/api/v1"
     PROJECT_NAME: str = "SmartQA Assistant API"
 
     # CORS 설정
     BACKEND_CORS_ORIGINS: list[str] = ["*"]
 
     # SQLite 데이터베이스 설정
-    DB_PATH: str = "history.db"
-    SQLALCHEMY_DATABASE_URI: str = f"sqlite:///./{DB_PATH}"
+    DB_PATH                 : str = "history.db"
+    SQLALCHEMY_DATABASE_URI : str = f"sqlite:///./{DB_PATH}"
 
     model_config = SettingsConfigDict(env_file=".env", case_sensitive=True)
 
     def get_llm(self):
         """Azure OpenAI LLM 인스턴스를 반환합니다."""
         return AzureChatOpenAI(
-            openai_api_key=self.AOAI_API_KEY,
-            azure_endpoint=self.AOAI_ENDPOINT,
-            azure_deployment=self.AOAI_DEPLOY_GPT4O,
-            api_version=self.AOAI_API_VERSION,
-            temperature=0.7,
-            streaming=True,  # 스트리밍 활성화
+            openai_api_key  = self.AOAI_API_KEY,
+            azure_endpoint  = self.AOAI_ENDPOINT,
+            azure_deployment= self.AOAI_DEPLOY_GPT4O,
+            api_version     = self.AOAI_API_VERSION,
+            temperature     = 0.7,
+            streaming       = True,  # 스트리밍 활성화
         )
 
     def get_embeddings(self):
         """Azure OpenAI Embeddings 인스턴스를 반환합니다."""
         return AzureOpenAIEmbeddings(
-            model=self.AOAI_EMBEDDING_DEPLOYMENT,
-            openai_api_version=self.AOAI_API_VERSION,
-            api_key=self.AOAI_API_KEY,
-            azure_endpoint=self.AOAI_ENDPOINT,
+            model               = self.AOAI_EMBEDDING_DEPLOYMENT,
+            openai_api_version  = self.AOAI_API_VERSION,
+            api_key             = self.AOAI_API_KEY,
+            azure_endpoint      = self.AOAI_ENDPOINT,
         )
 
 
