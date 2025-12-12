@@ -1,4 +1,4 @@
-from workflow.agents.sqaa_agent import SQAAAgent
+from workflow.agents.evaluate_agent import SQAAAgent
 from workflow.agents.count_manager import CountManager
 from workflow.state import EvaluateState, AgentType
 from langgraph.graph import StateGraph, END

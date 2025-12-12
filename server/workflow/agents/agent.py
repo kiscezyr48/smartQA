@@ -64,7 +64,7 @@ class Agent(ABC):
         # 검색 쿼리 생성
         query = stock_no
         if self.role == AgentType.SQAA:
-            query += " 이해" # 이해하셨죠, 이해되셨죠, 이해했나요 등 스크립트 일부
+            query += " 다보장식 세일즈" # 과장광고 등 검출해내야 하는 스크립트 일부
 
         # RAG 서비스를 통해 검색 실행
         docs = search_stock_no(stock_no, self.role, query, k=self.k)  # noqa: F821
